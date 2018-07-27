@@ -1,0 +1,34 @@
+{
+       "data": {
+        "type": "categories",
+        "id": "1001",
+        "attributes": {
+            "website-category-id": 1001,
+            "maincategory": "Agriculture, Forestry, Fishing",
+            "subcategory": "Agriculture",
+            "lang": "en",
+            "description": "Activities relating to the growing & planting of plants and raising & breeding of animals for food production and other purposes. Including farms, vineyards, horse breeding, production of fur skins and renting of agricultural equipment."
+        },
+        "data": {
+        "type": "categories",
+        "id": "1002",
+        "attributes": {
+            "website-category-id": 1002,
+            "maincategory": "Agriculture, Forestry, Fishing",
+            "subcategory": "Fishing",
+            "lang": "en",
+            "description": "Fishing and farming of marine animals and fish for commercial purposes (includes whale catching, gathering shellfish). Excludes processing of fish, recreation fishing and boat/ship activities."
+        }
+        ,
+        "data": {
+        "type": "categories",
+        "id": "1003",
+        "attributes": {
+            "website-category-id": 1001,
+            "maincategory": "Agriculture, Forestry, Fishing",
+            "subcategory": "Forestry",
+            "lang": "en",
+            "description": "Growing & logging of forests, gathering of forest products (e.g. truffles, cork, mosses), and other forestry services (e.g. forest fire fighting, forest tree nurseries, forest replanting)."
+        }
+    }
+}
