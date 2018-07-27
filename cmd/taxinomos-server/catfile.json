@@ -1,0 +1,26 @@
+[{    "data": {
+        "type": "categories",
+        "id": "1105",
+        "attributes": {
+            "website-category-id": 1105,
+            "maincategory": "Automotive",
+            "subcategory": "Wholesale trade of motor vehicle parts and accessories",
+            "lang": "en",
+            "description": "This is a test description"
+        },
+        "relationships": {
+            "measurements": {
+                "meta": {
+                    "total": 1
+                },
+                "links": {
+                    "self": "https://classify-rest.labs.nic.at/api/v1/categories/1105/relationships/measurements",
+                    "related": "https://classify-rest.labs.nic.at/api/v1/categories/1105/measurements"
+                }
+            }
+        },
+        "links": {
+            "self": "https://classify-rest.labs.nic.at/api/v1/categories/1105"
+        }
+    }
+}]

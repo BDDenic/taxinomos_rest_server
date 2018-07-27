@@ -25,7 +25,7 @@ var (
 	debuglevel    int
 	configfile    string
 	wg            sync.WaitGroup
-	categoryList  categories.Categories
+	categoryList  []categories.Category
 	catfile       string
 )
 
@@ -63,6 +63,7 @@ func main() {
 	{
 		apiGroup.GET("/fetch", Fetch)
 		apiGroup.GET("/categories", GetCategories)
+		apiGroup.OPTIONS("/categories", GetCategories)
 		//apiGroup.GET("/statuses", GetStatuses)
 	}
 

@@ -69,7 +69,7 @@ type Category struct {
 
 type Categories []Categories
 
-func LoadCategoriesFromFile(filename string, categories *Categories) error {
+func LoadCategoriesFromFile(filename string, categories *[]Category) error {
 	categoriesbytes, err := ioutil.ReadFile(filename)
 	if err != nil {
 		return err
