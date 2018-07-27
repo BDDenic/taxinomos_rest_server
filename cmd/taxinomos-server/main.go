@@ -9,6 +9,7 @@ import (
 	"sync"
 	"syscall"
 
+	"github.com/DENICeG/taxinomos_rest_server/categories"
 	"github.com/DENICeG/taxinomos_rest_server/logging"
 
 	"github.com/alecthomas/kingpin"
@@ -24,11 +25,14 @@ var (
 	debuglevel    int
 	configfile    string
 	wg            sync.WaitGroup
+	categoryList  categories.Categories
+	catfile       string
 )
 
 func main() {
 	kingpin.UsageTemplate(kingpin.CompactUsageTemplate)
 	kingpin.Flag("listenaddress", "Socket for the server to listen on.").Default("0.0.0.0:8080").Short('l').StringVar(&listenaddress)
+	kingpin.Flag("catfile", "File that contains the category information.").Default("catfile.json").Short('c').StringVar(&catfile)
 	kingpin.Parse()
 
 	//
@@ -40,7 +44,7 @@ func main() {
 	router.Use(gin.Recovery())
 	router.Use(logging.GinLogger())
 
-	log.Println("=====  MagicLinkServer  =====")
+	log.Println("=====  Taxinomos REST API Server  =====")
 	log.Printf("Builddate: %s", builddate)
 	log.Printf("Version  : %s", version)
 	log.Printf("Revision : %s", revision)
@@ -48,10 +52,17 @@ func main() {
 	log.Println("ServerConfig:")
 	log.Printf("  listenaddress: %s", listenaddress)
 
+	log.Printf("Loading categories from file: ")
+
+	err := categories.LoadCategoriesFromFile(catfile, &categoryList)
+	if err != nil {
+		log.Panic("Cannot load categories from file: %s - %s", catfile, err.Error())
+	}
+
 	apiGroup := router.Group("/api/v1")
 	{
 		apiGroup.GET("/fetch", Fetch)
-		//apiGroup.GET("/categories", GetCategories)
+		apiGroup.GET("/categories", GetCategories)
 		//apiGroup.GET("/statuses", GetStatuses)
 	}
 
@@ -78,4 +89,8 @@ func main() {
 
 func Fetch(c *gin.Context) {
 	c.Redirect(301, "https://www.google.de")
+}
+
+func GetCategories(c *gin.Context) {
+	c.JSON(200, categoryList)
 }

@@ -1,5 +1,10 @@
 package categories
 
+import (
+	"encoding/json"
+	"io/ioutil"
+)
+
 /*
 {
     "data": {
@@ -29,6 +34,8 @@ package categories
     }
 }
 */
+
+type CategoryList []Category
 
 type CategoryData struct {
 	Type          string                `json:"type"`
@@ -61,3 +68,16 @@ type Category struct {
 }
 
 type Categories []Categories
+
+func LoadCategoriesFromFile(filename string, categories *Categories) error {
+	categoriesbytes, err := ioutil.ReadFile(filename)
+	if err != nil {
+		return err
+	}
+
+	err = json.Unmarshal(categoriesbytes, categories)
+	if err != nil {
+		return err
+	}
+	return nil
+}
