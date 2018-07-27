@@ -55,7 +55,13 @@ type CategoryAttributes struct {
 
 type CategoryRelationships struct {
 	Measurements struct {
-		Total int `json:"total"`
+		Meta struct {
+			Total int `json:"total"`
+		} `json:"meta"`
+		Links struct {
+			Self    string `json:"self"`
+			Related string `json:"related"`
+		} `json:"links"`
 	} `json:"measurements"`
 }
 
